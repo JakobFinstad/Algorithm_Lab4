@@ -1,0 +1,3 @@
+#+title: Lab 04: Trees
+
+See the associated question set on Blackboard
