@@ -9,6 +9,8 @@
 package no.ntnu.idata2302.lab04;
 
 
+import java.util.Stack;
+
 public class Tree {
     private Node root;
 
@@ -142,13 +144,69 @@ public class Tree {
     }
 
     public void inOrderTraversal() {
-        // TODO: implement in-order tree traversal, printing the items
-        throw new RuntimeException("Not yet implemented!");
+
+        //Checking if the tree is empty, return null if root is null
+        if(this.root==null){
+            return;
+        }
+
+        //Initiate the first node and the stack
+        Node current = this.root;
+        Stack<Node> stack = new Stack<>();
+
+        while(current!=null || !stack.isEmpty()){
+
+            //Traversing the tree to the most left node, exits the loop when the tree doesn't
+            //have any more left nodes.
+            while(current!=null){
+
+                //Storing the node
+                stack.push(current);
+
+                //Setting the new left node, null if no node
+                current = current.left;
+            }
+
+            //Get the last used node, and printing it
+            current = stack.pop();
+            System.out.print(current.item +" ");
+            //Sets the right child as the new node, or jumps up a layer if child equal null
+            current = current.right;
+
+        }
     }
 
     public void postOrderTraversal() {
-        // TODO: implement post-order tree traversal, printing the items
-        throw new RuntimeException("Not yet implemented!");
+
+        //Checking if the tree is empty, return null if root is null
+        if(this.root==null){
+            return;
+        }
+
+        //Initiate the first node and the stack
+        Node current = this.root;
+        Stack<Node> stack = new Stack<>();
+
+        while(current!=null || !stack.isEmpty()){
+
+            //Traversing the tree to the most right node, exits the loop when the tree doesn't
+            //have any more left nodes.
+            while(current!=null){
+
+                //Storing the node
+                stack.push(current);
+
+                //Setting the new left node, null if no node
+                current = current.right;
+            }
+
+            //Get the last used node, and printing it
+            current = stack.pop();
+            System.out.print(current.item +" ");
+            //Sets the left child as the new node, or jumps up a layer if child equal null
+            current = current.left;
+
+        }
     }
 
     public void preOrderTraversal() {
