@@ -209,9 +209,28 @@ public class Tree {
         }
     }
 
-    public void preOrderTraversal() {
+    public void preOrderTraversal(Node root) {
         // TODO: implement pre-order tree traversal, printing the items
-        throw new RuntimeException("Not yet implemented!");
+        if (root == null) {
+            return;
+        }
+
+        Stack<Node> nodeStack = new Stack<Node>();
+        nodeStack.push(root);
+
+        while (nodeStack.empty() == false) {
+            Node myNode = nodeStack.peek();
+            System.out.println(myNode.item + " ");
+            nodeStack.pop();
+
+            if (myNode.right != null) {
+                nodeStack.push(myNode.right);
+            }
+            if (myNode.left != null) {
+                nodeStack.push(myNode.left);
+            }
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
