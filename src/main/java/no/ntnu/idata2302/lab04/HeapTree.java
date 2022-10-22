@@ -97,7 +97,7 @@ public class HeapTree {
         if(!isLeaf(position)){
             int swapPos = position;
             // Swap with the minimum of the two children
-            // to check if right child exists. Otherwise default value will be '0'
+            // to check if right child exists, otherwise default value will be '0'
             // and that will be swapped with parent node.
             if(getRightChild(position) <= size)
                 swapPos = heap[getLeftChild(position)]< heap[getRightChild(position)]? getLeftChild(position): getRightChild(position);
@@ -114,18 +114,18 @@ public class HeapTree {
 
 
     /**
-     * Insert a node/element into the heap.
+     * Insert a node(k) into the heap.
      *
-     * @param element that shall be inserted to the heap
+     * @param k element that shall be inserted to the heap
      */
-    public void insert(int element)
+    public void insert(int k)
     {
 
         if (size >= maxSize) {
             return;
         }
 
-        heap[++size] = element;
+        heap[++size] = k;
         int current = size;
 
         while (heap[current] < heap[getParent(current)]) {
@@ -142,7 +142,7 @@ public class HeapTree {
     {
         for (int i = 1; i <= size / 2; i++) {
 
-            // Printing the parent and both childrens
+            // Printing the parent and both children
             System.out.print(
                     " PARENT : " + heap[i]
                             + " LEFT CHILD : " + heap[2 * i]
@@ -153,15 +153,13 @@ public class HeapTree {
         }
     }
 
-    // To remove and return the minimum
-    // element from the heap
 
     /**
      * Removes min node in the heap. And return the minimum value.
      *
      * @return the minimum of the heap aka the root node
      */
-    public int remove()
+    public int extractMin()
     {
 
         int popped = heap[FRONT];
@@ -198,7 +196,7 @@ public class HeapTree {
         // Removing minimum value from above heap
         // and printing it
         System.out.println("The Min val is "
-                + minHeap.remove());
+                + minHeap.extractMin());
 
 }
 }
